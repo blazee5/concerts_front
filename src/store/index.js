@@ -6,8 +6,12 @@ export default createStore({
     shows: [],
     artists: [],
     locations: [],
+    chosenSeats: [],
   },
   getters: {
+    getChosenSeats(state) {
+      return state.chosenSeats;
+    },
     allShows(state) {
       return state.shows;
     },
@@ -44,6 +48,14 @@ export default createStore({
     },
     setLocations(state, payload) {
       state.locations = payload;
+    },
+    addChosenSeat(state, seat) {
+      const index = state.chosenSeats.indexOf(seat);
+      if (index === -1) {
+        state.chosenSeats.push(seat);
+      } else {
+        state.chosenSeats.splice(index, 1);
+      }
     },
   },
   actions: {

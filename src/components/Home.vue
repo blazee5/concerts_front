@@ -21,8 +21,8 @@
       </div>
     </div>
     <div class="flex flex-row flex-wrap gap-4">
-      <Concert v-for="show in shows" :key="show.id" :id="show.id" :artist="show.artist" :location="show.location"
-        :start="show.start" :end="show.end" />
+      <Concert v-for="show in shows" :key="show" :concertId="show.concertId" :id="show.id" :artist="show.artist"
+        :location="show.location" :start="show.start" :end="show.end" />
     </div>
   </div>
 </template>
