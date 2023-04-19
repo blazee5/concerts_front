@@ -3,21 +3,22 @@
     <h1 class="text-center text-3xl p-5">
       Checkout these amazing concerts in Graz.
     </h1>
-    <div class="flex flex-row justify-center gap-3 px-3">
-      <select v-model="artist" name="" id="" class="pr-14 pl-2 py-2 rounded-md ring-1 ring-black">
+    <div class="flex flex-row justify-center gap-3 px-3 flex-wrap">
+      <select v-model="artist" name="" id="" class="pr-14 pl-2 py-1 rounded-md ring-1 ring-black">
         <option value="" selected>Artist</option>
         <option v-for="artist in allArtists" :key="artist" :value="artist">
           {{ artist }}
         </option>
       </select>
-      <select v-model="location" name="" id="" class="pr-14 pl-2 py-2 rounded-md ring-1 ring-black">
+      <select v-model="location" name="" id="" class="pr-14 pl-2 py-1 rounded-md ring-1 ring-black">
         <option value="" selected>Location</option>
         <option v-for="location in allLocations" :key="location" :value="location">
           {{ location }}
         </option>
       </select>
-      <div class="pr-14 pl-2 py-2 rounded-md">
-        <input v-model="date" type="date" class="form-control ring-1 ring-black rounded-md py-2 px-3" id="exampleFormControlInput1" />
+      <div class="pr-14 pl-2 rounded-md py-1">
+        <input v-model="date" type="date" class="form-control ring-1 ring-black rounded-md py-1 px-3"
+          id="exampleFormControlInput1" />
       </div>
     </div>
     <div class="flex flex-row flex-wrap gap-4 justify-center mt-16">

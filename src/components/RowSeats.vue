@@ -1,8 +1,15 @@
 <template>
-  <div v-for="index in row.seats.total" :key="index" v-on:click="(e) => e.target.classList.toggle('bg-green-300')"
-    @click="addChosenSeat(index)">
-    <div class="ring-1 w-6 ring-black rounded-full cursor-pointer hover:bg-amber-300" :id="row.name + index"
-      :class="{ 'bg-red-300 cursor-not-allowed': isUnavailable(index) }">
+  <div
+    v-for="index in row.seats.total"
+    :key="index"
+    v-on:click="(e) => e.target.classList.toggle('bg-green-300')"
+    @click="addChosenSeat(index)"
+  >
+    <div
+      class="ring-1 w-6 ring-black rounded-full cursor-pointer hover:bg-amber-300"
+      :id="row.name + index"
+      :class="{ 'bg-red-300 cursor-not-allowed': isUnavailable(index) }"
+    >
       <button></button>
     </div>
   </div>
@@ -40,7 +47,7 @@ export default {
         this.$store.commit("addChosenSeat", seat);
         const data = {
           reservations: this.getChosenSeats,
-          duration: 299,
+          duration: 180,
           reservation_token: this.getReservationToken,
         };
         if (!this.getReservationToken) {

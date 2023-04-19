@@ -23,8 +23,12 @@ export default createStore({
       let timer = state.timer;
       let minutes = Math.floor(timer / 60);
       let seconds = timer % 60;
+
       if (seconds === 0) {
         seconds = "00";
+      }
+      if (seconds < 10) {
+        seconds = "0" + seconds;
       }
       return `${minutes}:${seconds}`;
     },
