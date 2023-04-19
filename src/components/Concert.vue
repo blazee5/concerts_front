@@ -1,13 +1,14 @@
 <template>
   <a @click="openBooking">
     <div v-if="start"
-      class="concerts flex flex-col rounded-3xl py-1 px-[3rem] w-60 text-center justify-center ring-black ring-1">
-      <p class="text-xl">{{ start.toLocaleDateString() }}</p>
-      <p class="pb-10">{{ artist }}</p>
-      <p class="pb-2">
-        {{ start.toLocaleString() }} -
-        {{ end.toLocaleString() }}
-      </p>
+         class="concerts py-1 px-[3rem] gap-8 ring-1 ring-black rounded-lg flex flex-col w-fit text-center">
+      <div>
+        <p class="text-xl">{{ start.toLocaleDateString() }}</p>
+        <p class="pb-10">{{ artist }}</p>
+        <p>{{ location }}</p>
+      </div>
+      <p>{{ start.toLocaleTimeString() }}-{{ end.toLocaleTimeString() }}</p>
+
     </div>
   </a>
 </template>
@@ -20,12 +21,12 @@ export default {
     };
   },
   props: {
-    artist: { type: String, required: true },
-    start: { type: Date, required: false },
-    end: { type: Date, required: false },
-    location: { type: String, required: true },
-    concertId: { type: Number, required: false },
-    id: { type: Number, required: false },
+    artist: {type: String, required: true},
+    start: {type: Date, required: false},
+    end: {type: Date, required: false},
+    location: {type: String, required: true},
+    concertId: {type: Number, required: false},
+    id: {type: Number, required: false},
   },
   methods: {
     openBooking() {

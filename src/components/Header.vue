@@ -3,7 +3,7 @@
     <button @click="goHome">EuroSkills Concerts</button>
     <div class="flex flex-row flex-wrap justify-center gap-2 items-center">
       <p>Already booked?</p>
-      <button class="bg-white text-black rounded-xl px-2 py-2">
+      <button @click="this.$router.push('/getTickets')" class="bg-white text-black rounded-xl px-2 py-2">
         Get Tickets
       </button>
     </div>

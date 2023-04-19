@@ -7,8 +7,30 @@ export default createStore({
     artists: [],
     locations: [],
     chosenSeats: [],
+    reservationToken: "",
+    timer: 180,
+    timerInterval: null,
+    tickets: [],
   },
   getters: {
+    getTickets(state) {
+      return state.tickets;
+    },
+    getTimerInterval(state) {
+      return state.timerInterval;
+    },
+    getFormattedTime(state) {
+      let timer = state.timer;
+      let minutes = Math.floor(timer / 60);
+      let seconds = timer % 60;
+      if (seconds === 0) {
+        seconds = "00";
+      }
+      return `${minutes}:${seconds}`;
+    },
+    getReservationToken(state) {
+      return state.reservationToken;
+    },
     getChosenSeats(state) {
       return state.chosenSeats;
     },
@@ -40,6 +62,9 @@ export default createStore({
     },
   },
   mutations: {
+    setTickets(state, payload) {
+      state.tickets.push(payload);
+    },
     setShows(state, payload) {
       state.shows = payload;
     },
@@ -56,6 +81,27 @@ export default createStore({
       } else {
         state.chosenSeats.splice(index, 1);
       }
+      if (!state.timerInterval) {
+        state.timerInterval = setInterval(() => {
+          this.commit("setTimer", state.timer - 1);
+          if (state.timer <= 0) {
+            clearInterval(state.timerInterval);
+            state.timerInterval = null;
+            window.location.reload();
+          }
+        }, 1000);
+      }
+    },
+    setReservationToken(state, payload) {
+      if (state.reservationToken == "") {
+        state.reservationToken = payload;
+      }
+    },
+    setTimer(state, value) {
+      state.timer = value;
+    },
+    stopTimer(state, value) {
+      clearInterval(state.timerInterval);
     },
   },
   actions: {
